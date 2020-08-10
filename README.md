@@ -1,6 +1,8 @@
 # VerdeOliva
 Este software es utilizado en un local de Comida Rapida.
+
 Este proyecto contempla ABMC, Transacciones, Reportes, etc. Contiene funciones tecnicas y funcional.
+
 El proyecto de aplicacion de escritorio esta basado en WinForm C# con una base de datos de SQL SERVER
 
 ### Base de datos de ejemplo
