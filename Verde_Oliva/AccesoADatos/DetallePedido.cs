@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,65 +10,27 @@ namespace Verde_Oliva.AccesoADatos
 {
     public class DetallePedido
     {
-
-        public static bool InsertarDetallePedido(int id, int codigo, string comida, int cantidad, int costounitario, int costototal)
+        public static DataTable obtenerDetalles(int nropedido)
         {
-            string cadenaConexion = "Data Source=ERIK-PC;Initial Catalog=VerdeOliva;Integrated Security=True";
-            SqlCommand cmd = new SqlCommand();
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                string consulta = "INSERT INTO DetallePedido VALUES (@IdDetallePedido,@Codigo,@Comida,@Cantidad,@CostoUnitario,@CostoTotal)";
-
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@IdDetallePedido", id);
-                cmd.Parameters.AddWithValue("@Codigo", codigo);
-                cmd.Parameters.AddWithValue("@Comida ", comida);
-                cmd.Parameters.AddWithValue("@Cantidad", cantidad);
-                cmd.Parameters.AddWithValue("@CostoUnitario", costounitario);
-                cmd.Parameters.AddWithValue("@CostoTotal ", costototal);
-
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-
-                cmd.ExecuteNonQuery();
-
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
-        }
-
-        public static DataTable ObtenerProducto(int codigo)
-        {
-            string cadenaConexion = "Data Source=ERIK-PC;Initial Catalog=VerdeOliva;Integrated Security=True";
-            SqlConnection cn = new SqlConnection(cadenaConexion);
+            SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
             SqlCommand cmd = new SqlCommand();
             try
             {
-                string consulta = "SELECT Comida,CostoUnitario FROM Producto WHERE codigo=@Codigo";
+                string consulta = "SELECT Comida,Cantidad,CostoUnitario,CostoTotal FROM DetallePedido WHERE IdPedido = @nropedido";
 
                 cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@Codigo", codigo);
+                cmd.Parameters.AddWithValue("@nropedido", nropedido);
 
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
 
                 DataTable tabla = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                cn.Open();
+
+                cmd.Connection = cn;
+
                 da.Fill(tabla);
 
                 return tabla;
@@ -83,27 +44,39 @@ namespace Verde_Oliva.AccesoADatos
             {
                 cn.Close();
             }
-        }
 
-        /* ELIMINAR UN PEDIDO O DETALLE
-        public static bool EliminarPedido(int dni)
+        }
+        public static bool InsertarDetallePedido(int idpedido, int montototal, List<Entidad.DetallePedido> listadt)
         {
-            string cadenaConexion = "Data Source=ERIK-PC;Initial Catalog=VerdeOliva;Integrated Security=True";
-            SqlCommand cmd = new SqlCommand();
-            SqlConnection cn = new SqlConnection(cadenaConexion);
+            SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
             try
             {
-                string consulta = "DELETE FROM  WHERE [DNI] = @dni";
-
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@dni", dni);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
+                //SqlCommand cmdDetallePedido = new SqlCommand("InsertarDetallePedido", cn);
+                SqlCommand cmdDetallePedido = new SqlCommand();
 
                 cn.Open();
-                cmd.Connection = cn;
+                foreach (var item in listadt)
+                {
 
-                cmd.ExecuteNonQuery();
+                    string consultadt = "INSERT INTO DetallePedido VALUES(@IdDetallePedido,@Comida,@Cantidad,@CostoUnitario,@CostoTotal) WHERE IdPedido = @IdPedido";
+
+                    cmdDetallePedido.Parameters.Clear();
+                    cmdDetallePedido.Parameters.AddWithValue("@IdPedido", idpedido);
+                    cmdDetallePedido.Parameters.AddWithValue("@IdDetallePedido", item.IdDetallePedido);
+                    cmdDetallePedido.Parameters.AddWithValue("@Comida", item.Comida);
+                    cmdDetallePedido.Parameters.AddWithValue("@Cantidad", item.Cantidad);
+                    cmdDetallePedido.Parameters.AddWithValue("@CostoUnitario", item.CostoUnitario);
+                    cmdDetallePedido.Parameters.AddWithValue("@CostoTotal", item.CostoTotal);
+                    cmdDetallePedido.CommandType = CommandType.Text;
+                    cmdDetallePedido.CommandText = consultadt;
+                    //cmdDetallePedido.CommandType = CommandType.StoredProcedure;
+
+                    cmdDetallePedido.Connection = cn;
+
+                    cmdDetallePedido.ExecuteNonQuery();
+
+                }
+
                 return true;
 
             }
@@ -111,13 +84,78 @@ namespace Verde_Oliva.AccesoADatos
             {
                 return false;
                 throw;
+
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+        public static void eliminarDetalles(int idpedido)
+        {
+            SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            try
+            {
+                SqlCommand cmdDetallePedido = new SqlCommand();
+
+                string consultadt = "DELETE FROM DetallePedido WHERE IdPedido = @IdPedido";
+
+                cmdDetallePedido.Parameters.Clear();
+                cmdDetallePedido.Parameters.AddWithValue("@IdPedido", idpedido);
+
+                cmdDetallePedido.CommandType = CommandType.Text;
+                cmdDetallePedido.CommandText = consultadt;
+
+                cn.Open();
+
+                cmdDetallePedido.Connection = cn;
+
+                cmdDetallePedido.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+
             }
             finally
             {
                 cn.Close();
             }
 
+        }
+        public static void eliminarDetallePedido(int iddetallepedido)
+        {
+            SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            try
+            {
+                SqlCommand cmdDetallePedido = new SqlCommand();
 
-        }*/
+                string consultadt = "DELETE FROM DetallePedido WHERE IdDetallePedido = @IdDetallePedido";
+
+                cmdDetallePedido.Parameters.Clear();
+                cmdDetallePedido.Parameters.AddWithValue("@IdDetallePedido", iddetallepedido);
+
+                cmdDetallePedido.CommandType = CommandType.Text;
+                cmdDetallePedido.CommandText = consultadt;
+
+                cn.Open();
+
+                cmdDetallePedido.Connection = cn;
+
+                cmdDetallePedido.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+
+            }
+            finally
+            {
+                cn.Close();
+            }
+
+        }
+
     }
-}
+        
+ }

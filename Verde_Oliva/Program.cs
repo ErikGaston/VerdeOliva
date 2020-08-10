@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Verde_Oliva.Presentacion;
 
 namespace Verde_Oliva
 {
@@ -16,7 +17,8 @@ namespace Verde_Oliva
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Pedido());
+            Application.Run(new VerificarContraseña());
+
         }
     }
 }
