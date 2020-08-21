@@ -269,7 +269,6 @@ namespace Verde_Oliva
                     horasalida = horaactual.AddMinutes(40);
                     BuscaEnvia = "ENVIAR";
                 }
-                //horasalida = horaactual.AddMinutes(40);
 
                 Ticket1.TextoDerecha("HORA SALIDA: " + horasalida.Hour + ":" + horasalida.Minute);
                 Ticket1.TextoIzquierda("  ");
@@ -336,7 +335,19 @@ namespace Verde_Oliva
 
         private void RadioBusca_CheckedChanged(object sender, EventArgs e)
         {
+            if (radioBusca.Checked)
+            {
+                foreach (DataGridViewRow fila in grilla.Rows)
+                {
+                    if (fila.Cells["Comida"].Value.ToString().Equals("ENVIO"))
+                    {
+                        grilla.Rows.RemoveAt(fila.Index);
+                    }
+                    
+                }
+                
 
+            }
         }
     }
 }
