@@ -58,6 +58,13 @@ namespace Verde_Oliva
             ticket = "Articulo        Cant    P.Unit    Importe\n";   // agrega lineas de  encabezados
             RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, ticket); // imprime texto
         }
+        public void EncabezadoVenta1()
+        {
+            PrintDialog pd = new PrintDialog();
+            pd.PrinterSettings = new PrinterSettings();
+            ticket = "Cant    Articulo            P.Unit    Importe\n";   // agrega lineas de  encabezados 12lineas
+            RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, ticket); // imprime texto
+        }
         public void TextoIzquierda(string par1)                          // agrega texto a la izquierda
         {
             PrintDialog pd = new PrintDialog();
@@ -160,6 +167,53 @@ namespace Verde_Oliva
             ticket += parte2 + "\n";
             RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, ticket); // imprime texto
         }
+        public void AgregaArticulo1(int cant, string par1, double precio, double total)
+        {
+            PrintDialog pd = new PrintDialog();
+            pd.PrinterSettings = new PrinterSettings();
+            if (cant.ToString().Length <= 3 && precio.ToString("c").Length <= 10 && total.ToString("c").Length <= 11) // valida que cant precio y total esten dentro de rango
+            {
+                max = 6;
+                if (cant.ToString().Length == 1)
+                {
+                    ticket = " " + cant.ToString();         // agrega cantidad
+                }
+                else
+                {
+                    ticket = cant.ToString();
+                }
+                for (int i = 0; i < max; i++)                // **********
+                {
+                    ticket += " ";                           // Agrega espacios para poner el valor de cantidad
+                }                                      
+                max = par1.Length;                          
+                if (max > 16)                                 // **********
+                {
+                    cort = max - 16;
+                    parte1 = par1.Remove(16, cort);          // corta a 16 la descripcion del articulo
+                }
+                else { parte1 = par1; }                      // **********
+                ticket += parte1;                             // agrega articulo
+                max = (10 - precio.ToString("c").Length) + (16 - parte1.Length);
+                for (int i = 0; i < max; i++)                // **********
+                {
+                    ticket += " ";                           // Agrega espacios
+                }                                            // **********
+                ticket += precio.ToString("c"); // agrega precio
+                max = 6 - (total.ToString().Length);
+                for (int i = 0; i < max; i++)                // **********
+                {
+                    ticket += " ";                           // Agrega espacios
+                }                                            // **********
+                ticket += total.ToString("c") + "\n"; // agrega precio
+                RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, ticket); // imprime texto
+            }
+            else
+            {
+                MessageBox.Show("Valores fuera de rango");
+                RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, "Error, valor fuera de rango\n"); // imprime texto
+            }
+        }
         public void AgregaArticulo(string par1, int cant, double precio, double total)
         {
             PrintDialog pd = new PrintDialog();
@@ -185,7 +239,7 @@ namespace Verde_Oliva
                 {
                     ticket += " ";                           // Agrega espacios
                 }                                            // **********
-                ticket += precio.ToString("c"); // agrega precio
+                ticket += precio.ToString("c");             // agrega precio
                 max = 11 - (total.ToString().Length);
                 for (int i = 0; i < max; i++)                // **********
                 {

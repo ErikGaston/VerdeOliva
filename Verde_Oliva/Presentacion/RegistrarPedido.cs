@@ -15,52 +15,57 @@ namespace Verde_Oliva
 {
     public partial class Pedido : Form
     {
-        private string CostoU;
         private int CostoT;
-        
+        private DateTime horaactual = DateTime.Now;
+        //private DateTime horabusca;
+        private DateTime horasalida;
+        private bool buscaEnvio;
 
         public Pedido()
         {
             InitializeComponent();
             txtCantidad.Text = "1";
-            txtCodigo.Text = "0";
-        }
-
-        //Boton para buscar el producto
-        private void BtnBuscar_Click(object sender, EventArgs e)
-        {
-            buscarProducto();
+            cargarCombo();
         }
 
         //Metodo para obtener un producto de la Base de Datos
-        private void buscarProducto()
+        private void cargarCombo()
         {
-
             try
             {
-                if (txtCodigo.Text.Equals(""))
-                {
-                    MessageBox.Show("Ingrese un CODIGO de producto");
-                }
-                else
-                {
-                    DataTable resultado = AccesoADatos.Producto.ObtenerProductoId(int.Parse(txtCodigo.Text));
-                    if (resultado.Rows.Count > 0)
-                    {
-                        txtDescripcion.Text = resultado.Rows[0][0].ToString();
-                        CostoU = resultado.Rows[0][1].ToString();
+                DataTable lomo = AccesoADatos.Producto.ObtenerProductoLomo();
+                DataTable pizza = AccesoADatos.Producto.ObtenerProductoPizza();
+                DataTable emp = AccesoADatos.Producto.ObtenerProductoEmpanada();
+                DataTable otros = AccesoADatos.Producto.ObtenerProductoOtros();
+                DataTable promo = AccesoADatos.Producto.ObtenerProductoOtros();
 
+                cmbLomo.DataSource = lomo;
+                cmbLomo.ValueMember = "CostoUnitario";
+                cmbLomo.DisplayMember = "Comida";
+                cmbLomo.SelectedIndex = -1;
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error no existen productos con ese codigo");
-                    }
-                }
+                cmbPizza.DataSource = pizza;
+                cmbPizza.ValueMember = "CostoUnitario";
+                cmbPizza.DisplayMember = "Comida";
+                cmbPizza.SelectedIndex = -1;
+
+                cmbEmp.DataSource = emp;
+                cmbEmp.ValueMember = "CostoUnitario";
+                cmbEmp.DisplayMember = "Comida";
+                cmbEmp.SelectedIndex = -1;
+
+                cmbOtros.DataSource = otros;
+                cmbOtros.ValueMember = "CostoUnitario";
+                cmbOtros.DisplayMember = "Comida";
+                cmbOtros.SelectedIndex = -1;
+
+                cmbPromo.DataSource = promo;
+                cmbPromo.ValueMember = "CostoUnitario";
+                cmbPromo.DisplayMember = "Comida";
+                cmbPromo.SelectedIndex = -1;
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -68,19 +73,49 @@ namespace Verde_Oliva
         //Boton para agregar los contenidos de TextBox a la grilla
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            if (txtDescripcion.Text.Equals("") || txtCantidad.Text.Equals("") || txtCodigo.Text.Equals("") || (int.Parse(txtCantidad.Text) == 0))
+
+            
+            if (cmbEmp.Text.Equals("") && cmbLomo.Text.Equals("") && cmbOtros.Text.Equals("") && cmbPizza.Text.Equals("") && txtCantidad.Text.Equals("") && cmbPromo.Text.Equals(""))
             {
-                MessageBox.Show("Los campos: Codigo, Descripcion de Comida, Cantidad, son obligatorios!");
+                MessageBox.Show("Los campos PRODUCTOS son obligatorios!");
             }
             else
             {
-                CostoT = int.Parse(CostoU) * int.Parse(txtCantidad.Text);
+
                 //Agregamos valores a la grilla
-                grilla.Rows.Add(txtCodigo.Text, txtDescripcion.Text, txtCantidad.Text, CostoU, CostoT);
-                LimpiarCampos();
-                calcularMontoTotal();
-                txtMonto.Text = calcularMontoTotal().ToString();
+                if (!string.IsNullOrEmpty(cmbLomo.Text))
+                {
+                    CostoT = int.Parse(cmbLomo.SelectedValue.ToString()) * int.Parse(txtCantidad.Text);
+                    grilla.Rows.Add(txtCantidad.Text, cmbLomo.Text,cmbLomo.SelectedValue.ToString(), CostoT);
+                    LimpiarCampos();
+                }
+                if (!string.IsNullOrEmpty(cmbPizza.Text))
+                {
+                    CostoT = int.Parse(cmbPizza.SelectedValue.ToString()) * int.Parse(txtCantidad.Text);
+                    grilla.Rows.Add(txtCantidad.Text, cmbPizza.Text, cmbPizza.SelectedValue.ToString(), CostoT);
+                    LimpiarCampos();
+                }
+                if (!string.IsNullOrEmpty(cmbEmp.Text)) {
+                    CostoT = int.Parse(cmbEmp.SelectedValue.ToString()) * int.Parse(txtCantidad.Text);
+                    grilla.Rows.Add(txtCantidad.Text, cmbEmp.Text, cmbEmp.SelectedValue.ToString(), CostoT);
+                    LimpiarCampos();
+                }
+                if (!string.IsNullOrEmpty(cmbOtros.Text))
+                {
+                    CostoT = int.Parse(cmbOtros.SelectedValue.ToString()) * int.Parse(txtCantidad.Text);
+                    grilla.Rows.Add(txtCantidad.Text, cmbOtros.Text, cmbOtros.SelectedValue.ToString(), CostoT);
+                    LimpiarCampos();
+                }
+                if (!string.IsNullOrEmpty(cmbPromo.Text))
+                {
+                    CostoT = int.Parse(cmbPromo.SelectedValue.ToString()) * int.Parse(txtCantidad.Text);
+                    grilla.Rows.Add(txtCantidad.Text, cmbPromo.Text, cmbPromo.SelectedValue.ToString(), CostoT);
+                    LimpiarCampos();
+                }
+
             }
+            calcularMontoTotal();
+            txtMonto.Text = calcularMontoTotal().ToString();
 
         }
 
@@ -93,26 +128,28 @@ namespace Verde_Oliva
         //Metodo que limpia los campos de TextBox
         private void LimpiarCampos()
         {
-            txtCodigo.Text = "0";
-            txtDescripcion.Text = "";
+            cmbPizza.SelectedIndex = -1;
+            cmbLomo.SelectedIndex = -1;
+            cmbEmp.SelectedIndex = -1;
+            cmbOtros.SelectedIndex = -1;
             txtCantidad.Text = "1";
-            txtCodigo.Focus();
         }
         private void LimpiarCamposFinalizar()
         {
-            txtCodigo.Text = "0";
-            txtDescripcion.Text = "";
-            txtCantidad.Text = "1";
+            LimpiarCampos();
+
             txtDireccion.Text = "";
             txtNroTelefono.Text = "";
+
             txtMonto.Text = "";
-            txtNroTelefono.Text = "";
-            txtMonto.Text = "";
+            txtPaga.Text = "";
+
             grilla.Rows.Clear();
-            txtCodigo.Focus();
+            
         }
 
-        //Valida si el CODIGO es numerico
+
+        /*Valida si el CODIGO es numerico
         private void TxtCodigo_TextChanged(object sender, EventArgs e)
         {
             {
@@ -125,7 +162,7 @@ namespace Verde_Oliva
                     txtCodigo.Text = "";
                 }
             }
-        }
+        }*/
 
         //Boton de borrar fila seleccionada en la tabla
         private void BtnBorrar_Click(object sender, EventArgs e)
@@ -151,7 +188,7 @@ namespace Verde_Oliva
             int año = DateTime.Now.Year;
             int hora = DateTime.Now.Hour;
             int minuto = DateTime.Now.Minute;
-            lblFechaHora.Text = dia+"/"+mes+"/"+año+"       "+hora+":"+minuto;
+            lblFechaHora.Text = dia + "/" + mes + "/" + año + "       " + hora + ":" + minuto;
         }
 
         //calcula el MontoTotal de los productos para el ticket
@@ -207,36 +244,47 @@ namespace Verde_Oliva
 
         private void imprimirTicket(int idpedido, List<DetallePedido> lista)
         {
-            CreaTicket Ticket1 = new CreaTicket();
-            Ticket1.TextoCentro("Verde Oliva");// imprime en el centro "Verde Oliva"
-            Ticket1.TextoIzquierda("  ");
-            Ticket1.TextoIzquierda("Av. Olivares y Esq. Molle - Mi Valle Golf");
-            Ticket1.TextoIzquierda("351 - 3881552");
-            Ticket1.TextoIzquierda("351 - 2408897");
-            Ticket1.TextoIzquierda("  ");
-            Ticket1.TextoIzquierda("Nro Pedido: " + idpedido);
-            Ticket1.TextoExtremos("FECHA: " + DateTime.Now.Date, "HORA: " + DateTime.Now.Hour + ":" + DateTime.Now.Minute);
-            //HORA DE SALIDA
-            DateTime horaactual = DateTime.Now;
-            DateTime horasalida = horaactual.AddMinutes(40) ;
-
-            Ticket1.TextoDerecha("HORA SALIDA: " + horasalida.Hour + ":" + horasalida.Minute);
-            Ticket1.TextoIzquierda("  ");
-            Ticket1.TextoIzquierda("CLIENTE:");
-            Ticket1.TextoCentro(txtDireccion.Text);
-            Ticket1.TextoCentro(txtNroTelefono.Text);
-            Ticket1.TextoIzquierda("  ");
-            Ticket1.LineasGuion();
-            Ticket1.EncabezadoVenta(); // imprime encabezados
-            foreach (var item in lista)
+            try
             {
-                Ticket1.AgregaArticulo(item.Comida, item.Cantidad, item.CostoUnitario, item.CostoTotal); //imprime una linea de descripcion
-            }
-            Ticket1.LineasTotales(); // imprime linea
-            Ticket1.AgregaTotales("Total", calcularMontoTotal()); // imprime linea con total
-            Ticket1.LineasGuion();
-            Ticket1.CortaTicket(); // corta el ticket
+                CreaTicket Ticket1 = new CreaTicket();
+                Ticket1.TextoCentro("Verde Oliva");// imprime en el centro "Verde Oliva"
+                Ticket1.TextoIzquierda("  ");
+                Ticket1.TextoIzquierda("Av. Olivares y Esq. Molle - Mi Valle Golf");
+                Ticket1.TextoIzquierda("351 - 3881552");
+                Ticket1.TextoIzquierda("351 - 2408897");
+                Ticket1.TextoIzquierda("  ");
+                Ticket1.TextoIzquierda("Nro Pedido: " + idpedido);
+                Ticket1.TextoExtremos("FECHA: " + DateTime.Now.Date, "HORA: " + DateTime.Now.Hour + ":" + DateTime.Now.Minute);
 
+                //HORA DE SALIDA
+                horasalida = horaactual.AddMinutes(40);
+
+                Ticket1.TextoDerecha("HORA SALIDA: " + horasalida.Hour + ":" + horasalida.Minute);
+                Ticket1.TextoIzquierda("  ");
+                Ticket1.TextoIzquierda("CLIENTE:");
+                Ticket1.TextoIzquierda("  ");
+                Ticket1.TextoIzquierda(txtDireccion.Text);
+                Ticket1.TextoIzquierda(txtNroTelefono.Text);
+                Ticket1.TextoIzquierda("  ");
+                Ticket1.LineasGuion();
+                Ticket1.EncabezadoVenta1(); // imprime encabezados
+                foreach (var item in lista)
+                {
+                    //Ticket1.AgregaArticulo(item.Comida, item.Cantidad, item.CostoUnitario, item.CostoTotal); //imprime una linea de descripcion
+                    Ticket1.AgregaArticulo1(item.Cantidad, item.Comida, item.CostoUnitario, item.CostoTotal); //imprime una linea de descripcion
+                }
+                Ticket1.LineasTotales(); // imprime linea
+                Ticket1.AgregaTotales("Total", calcularMontoTotal()); // imprime linea con total
+                Ticket1.LineasGuion();
+                Ticket1.TextoIzquierda("  ");
+                Ticket1.AgregaTotales("Paga", double.Parse(txtPaga.Text));
+                Ticket1.CortaTicket(); // corta el ticket
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al imprimir ticket");
+                throw;
+            }
         }
 
         private void recordarDirecciones()
@@ -251,7 +299,7 @@ namespace Verde_Oliva
                     direccion.Add(Convert.ToString(fila["Direccion"]));
                 }
             }
-            
+
             txtDireccion.AutoCompleteCustomSource = direccion;
             txtDireccion.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtDireccion.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -261,6 +309,15 @@ namespace Verde_Oliva
         {
             recordarDirecciones();
         }
+
+        /*
+        private void verificarRadio()
+        {
+            if (radioEnvio.Checked=)
+            {
+
+            }
+        }*/
     }
 }
 
