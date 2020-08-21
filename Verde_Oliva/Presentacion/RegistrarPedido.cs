@@ -17,15 +17,15 @@ namespace Verde_Oliva
     {
         private int CostoT;
         private DateTime horaactual = DateTime.Now;
-        //private DateTime horabusca;
         private DateTime horasalida;
-        private bool buscaEnvio;
+        private string BuscaEnvia;
 
         public Pedido()
         {
             InitializeComponent();
             txtCantidad.Text = "1";
             cargarCombo();
+
         }
 
         //Metodo para obtener un producto de la Base de Datos
@@ -132,6 +132,7 @@ namespace Verde_Oliva
             cmbLomo.SelectedIndex = -1;
             cmbEmp.SelectedIndex = -1;
             cmbOtros.SelectedIndex = -1;
+            cmbPromo.SelectedIndex = -1;
             txtCantidad.Text = "1";
         }
         private void LimpiarCamposFinalizar()
@@ -256,13 +257,25 @@ namespace Verde_Oliva
                 Ticket1.TextoIzquierda("Nro Pedido: " + idpedido);
                 Ticket1.TextoExtremos("FECHA: " + DateTime.Now.Date, "HORA: " + DateTime.Now.Hour + ":" + DateTime.Now.Minute);
 
+
                 //HORA DE SALIDA
-                horasalida = horaactual.AddMinutes(40);
+                if (radioBusca.Checked)
+                {
+                    horasalida = horaactual.AddMinutes(20);
+                    BuscaEnvia = "BUSCA";
+                }
+                if (radioEnvio.Checked)
+                {
+                    horasalida = horaactual.AddMinutes(40);
+                    BuscaEnvia = "ENVIAR";
+                }
+                //horasalida = horaactual.AddMinutes(40);
 
                 Ticket1.TextoDerecha("HORA SALIDA: " + horasalida.Hour + ":" + horasalida.Minute);
                 Ticket1.TextoIzquierda("  ");
                 Ticket1.TextoIzquierda("CLIENTE:");
                 Ticket1.TextoIzquierda("  ");
+                Ticket1.TextoCentro(BuscaEnvia);
                 Ticket1.TextoIzquierda(txtDireccion.Text);
                 Ticket1.TextoIzquierda(txtNroTelefono.Text);
                 Ticket1.TextoIzquierda("  ");
@@ -310,14 +323,21 @@ namespace Verde_Oliva
             recordarDirecciones();
         }
 
-        /*
-        private void verificarRadio()
+        private void RadioEnvio_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioEnvio.Checked=)
+            if (radioEnvio.Checked)
             {
-
+                grilla.Rows.Add(1, "ENVIO", 30, 30);
+                
             }
-        }*/
+            calcularMontoTotal();
+            txtMonto.Text = calcularMontoTotal().ToString();
+        }
+
+        private void RadioBusca_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

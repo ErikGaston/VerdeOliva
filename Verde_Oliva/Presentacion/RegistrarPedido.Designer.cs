@@ -487,25 +487,27 @@
             // 
             this.radioBusca.AutoSize = true;
             this.radioBusca.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBusca.Location = new System.Drawing.Point(806, 669);
+            this.radioBusca.Location = new System.Drawing.Point(767, 664);
             this.radioBusca.Name = "radioBusca";
             this.radioBusca.Size = new System.Drawing.Size(129, 41);
             this.radioBusca.TabIndex = 47;
             this.radioBusca.TabStop = true;
             this.radioBusca.Text = "BUSCA";
             this.radioBusca.UseVisualStyleBackColor = true;
+            this.radioBusca.CheckedChanged += new System.EventHandler(this.RadioBusca_CheckedChanged);
             // 
             // radioEnvio
             // 
             this.radioEnvio.AutoSize = true;
             this.radioEnvio.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioEnvio.Location = new System.Drawing.Point(806, 602);
+            this.radioEnvio.Location = new System.Drawing.Point(570, 664);
             this.radioEnvio.Name = "radioEnvio";
             this.radioEnvio.Size = new System.Drawing.Size(135, 41);
             this.radioEnvio.TabIndex = 48;
             this.radioEnvio.TabStop = true;
             this.radioEnvio.Text = "ENVIAR";
             this.radioEnvio.UseVisualStyleBackColor = true;
+            this.radioEnvio.CheckedChanged += new System.EventHandler(this.RadioEnvio_CheckedChanged);
             // 
             // Pedido
             // 
