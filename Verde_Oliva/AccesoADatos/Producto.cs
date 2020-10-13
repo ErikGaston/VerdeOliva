@@ -194,7 +194,7 @@ namespace Verde_Oliva.AccesoADatos
             SqlCommand cmd = new SqlCommand("", cn);
             try
             {
-                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE '%Lom%' ";
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE 'Lomo%' ";
                 cmd.Parameters.Clear();
 
                 cmd.CommandType = CommandType.Text;
@@ -226,7 +226,39 @@ namespace Verde_Oliva.AccesoADatos
             SqlCommand cmd = new SqlCommand("", cn);
             try
             {
-                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE '%Pizz%' ";
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE 'P.%' ";
+                cmd.Parameters.Clear();
+
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                DataTable tabla = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                cn.Open();
+
+                da.Fill(tabla);
+
+                return tabla;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        public static DataTable ObtenerProductoMediaPizza()
+        {
+            SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("", cn);
+            try
+            {
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE 'Media P.%' ";
                 cmd.Parameters.Clear();
 
                 cmd.CommandType = CommandType.Text;
@@ -258,7 +290,7 @@ namespace Verde_Oliva.AccesoADatos
             SqlCommand cmd = new SqlCommand("", cn);
             try
             {
-                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE '%Emp%' ";
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE 'Emp%' OR Comida LIKE 'Doc.%' OR Comida LIKE 'Media D%'";
                 cmd.Parameters.Clear();
 
                 cmd.CommandType = CommandType.Text;
@@ -284,13 +316,13 @@ namespace Verde_Oliva.AccesoADatos
             }
         }
 
-        public static DataTable ObtenerProductoOtros()
+        public static DataTable ObtenerProductoHamb()
         {
             SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
             SqlCommand cmd = new SqlCommand("", cn);
             try
             {
-                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida NOT LIKE '%Lom%' AND Comida NOT LIKE '%Pizz%' AND Comida NOT LIKE '%Emp%' ";
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE 'Hamb%' ";
                 cmd.Parameters.Clear();
 
                 cmd.CommandType = CommandType.Text;
@@ -322,7 +354,7 @@ namespace Verde_Oliva.AccesoADatos
             SqlCommand cmd = new SqlCommand("", cn);
             try
             {
-                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE '%PROMO%' ";
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE 'PROMO%' ";
                 cmd.Parameters.Clear();
 
                 cmd.CommandType = CommandType.Text;
@@ -347,6 +379,40 @@ namespace Verde_Oliva.AccesoADatos
                 cn.Close();
             }
         }
+
+        public static DataTable ObtenerProductoOtros()
+        {
+            SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("", cn);
+            try
+            {
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida NOT LIKE 'Lomo%' AND Comida NOT LIKE 'P.%' AND Comida NOT LIKE 'Media%' AND Comida NOT LIKE 'PROMO%' AND Comida NOT LIKE 'Hamb%' AND Comida NOT LIKE 'Doc%' AND Comida NOT LIKE 'Emp%'";
+                cmd.Parameters.Clear();
+
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                DataTable tabla = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                cn.Open();
+
+                da.Fill(tabla);
+
+                return tabla;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+
 
 
     }

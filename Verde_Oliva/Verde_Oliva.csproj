@@ -74,6 +74,7 @@
     <Compile Include="Entidad\DetallePedido.cs" />
     <Compile Include="Entidad\Pedido.cs" />
     <Compile Include="Entidad\Producto.cs" />
+    <Compile Include="Controller\PedidoController.cs" />
     <Compile Include="Presentacion\ActualizarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,5 +260,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
