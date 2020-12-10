@@ -5,7 +5,7 @@ Este proyecto contempla ABMC, Transacciones, Reportes, Programacion en multiples
 
 Es de aplicacion de escritorio basado en WinForm C# con una base de datos de SQL SERVER
 
-### Base de datos de ejemplo
+### Base de datos
 ```sql
 
 USE [master]
