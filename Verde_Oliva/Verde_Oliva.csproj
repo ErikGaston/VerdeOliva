@@ -156,6 +156,9 @@
       <DependentUpon>ReporteListadoPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="VerdeOlivaDataSet1.cs">
+      <DependentUpon>VerdeOlivaDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="VerdeOlivaDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

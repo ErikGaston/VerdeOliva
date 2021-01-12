@@ -15,11 +15,13 @@ namespace Verde_Oliva
     {
         private DateTime fechadesde;
         private DateTime fechahasta;
+        TimeSpan ts = new TimeSpan(03, 00, 0);
+
         public ReporteListadoPedido(DateTime desde, DateTime hasta)
         {
             InitializeComponent();
-            fechadesde = desde;
-            fechahasta = hasta;
+            fechadesde = desde.Date + ts;
+            fechahasta = hasta.Date + ts;
         }
 
         private void ReporteListadoPedido_Load(object sender, EventArgs e)
@@ -29,13 +31,6 @@ namespace Verde_Oliva
 
         private void Reporte_Load(object sender, EventArgs e)
         {
-            /*
-            DataTable tabla = new DataTable();
-            tabla = AccesoADatos.Pedido.obtenerPedidos();
-            ReportDataSource ds = new ReportDataSource("DataSetPedidos", tabla);
-            Reporte.LocalReport.DataSources.Clear();
-            Reporte.LocalReport.DataSources.Add(ds);
-            Reporte.LocalReport.Refresh();*/
 
             DataTable tabla = new DataTable();
             tabla = AccesoADatos.Pedido.obtenerPedidosFecha(fechadesde, fechahasta);
