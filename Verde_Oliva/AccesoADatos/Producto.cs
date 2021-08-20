@@ -187,7 +187,6 @@ namespace Verde_Oliva.AccesoADatos
 
         }
 
-
         public static DataTable ObtenerProductoLomo()
         {
             SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
@@ -386,7 +385,7 @@ namespace Verde_Oliva.AccesoADatos
             SqlCommand cmd = new SqlCommand("", cn);
             try
             {
-                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida NOT LIKE 'Lomo%' AND Comida NOT LIKE 'P.%' AND Comida NOT LIKE 'Media%' AND Comida NOT LIKE 'PROMO%' AND Comida NOT LIKE 'Hamb%' AND Comida NOT LIKE 'Doc%' AND Comida NOT LIKE 'Emp%'";
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida NOT LIKE 'Lomo%' AND Comida NOT LIKE 'P.%' AND Comida NOT LIKE 'Media%' AND Comida NOT LIKE 'PROMO%' AND Comida NOT LIKE 'Hamb%' AND Comida NOT LIKE 'Doc%' AND Comida NOT LIKE 'Emp%' AND Comida NOT LIKE 'Beb.%' AND Comida NOT LIKE 'ENVIO%'";
                 cmd.Parameters.Clear();
 
                 cmd.CommandType = CommandType.Text;
@@ -412,6 +411,170 @@ namespace Verde_Oliva.AccesoADatos
             }
         }
 
+        public static DataTable ObtenerProductoBebidas()
+        {
+            SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("", cn);
+            try
+            {
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE 'Beb.%' ";
+                cmd.Parameters.Clear();
+
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                DataTable tabla = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                cn.Open();
+
+                da.Fill(tabla);
+
+                return tabla;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        public static DataTable ObtenerProductoMenu()
+        {
+            SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("", cn);
+            try
+            {
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE 'MENU%' ";
+                cmd.Parameters.Clear();
+
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                DataTable tabla = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                cn.Open();
+
+                da.Fill(tabla);
+
+                return tabla;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        public static bool ActualizarProductoGrupo(string codigo, int costo)
+        {
+            SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+
+                string consulta = "UPDATE Producto SET CostoUnitario = CostoUnitario + @Costo WHERE Comida LIKE @Codigo + '%'";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@Codigo", codigo);
+                cmd.Parameters.AddWithValue("@Costo", costo);
+
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                cn.Open();
+
+                cmd.Connection = cn;
+
+                cmd.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+
+            }
+            finally
+            {
+                cn.Close();
+            }
+
+        }
+
+        public static DataTable ObtenerProductoEnvio1()
+        {
+            SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("", cn);
+            try
+            {
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE 'ENVIO1%' ";
+                cmd.Parameters.Clear();
+
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                DataTable tabla = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                cn.Open();
+
+                da.Fill(tabla);
+
+                return tabla;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        public static DataTable ObtenerProductoEnvio2()
+        {
+            SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("", cn);
+            try
+            {
+                string consulta = "SELECT CostoUnitario,Comida FROM Producto WHERE Comida LIKE 'ENVIO2%' ";
+                cmd.Parameters.Clear();
+
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                DataTable tabla = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                cn.Open();
+
+                da.Fill(tabla);
+
+                return tabla;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
 
 
 

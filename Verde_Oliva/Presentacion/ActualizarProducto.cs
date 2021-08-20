@@ -21,12 +21,13 @@ namespace Verde_Oliva.Presentacion
             txtCodigo.Text = "";
             txtComida.Text = "";
             txtCostoUnitario.Text = "";
+            txtCodigoGrupo.Text = "";
+            txtCostoGrupo.Text = "";
             txtCodigo.Focus();
         }
         private void Button1_Click_1(object sender, EventArgs e)
         {
             actualizarProducto();
-            cargarGrilla();
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
@@ -36,8 +37,6 @@ namespace Verde_Oliva.Presentacion
             {
                 txtComida.Text = tabla.Rows[0][0].ToString();
                 txtCostoUnitario.Text = tabla.Rows[0][1].ToString();
-
-
             }
             else
             {
@@ -81,6 +80,34 @@ namespace Verde_Oliva.Presentacion
         private void ActualizarProducto_Load(object sender, EventArgs e)
         {
             cargarGrilla();
+        }
+
+        private void actualizarProductoGrupo()
+        {
+            if (txtCodigoGrupo.Text.Equals("") || txtCostoGrupo.Text.Equals(""))
+            {
+                MessageBox.Show("Los campos: Codigo y Costo  son obligatorios!");
+            }
+            else
+            {
+                bool resultado = AccesoADatos.Producto.ActualizarProductoGrupo(txtCodigoGrupo.Text, Convert.ToInt32(txtCostoGrupo.Text));
+                if (resultado)
+                {
+                    MessageBox.Show("El producto se actualizo con exito");
+                    LimpiarCampos();
+                    cargarGrilla();
+                }
+                else
+                {
+                    MessageBox.Show("El producto no pudo ser actualizado");
+                }
+            }
+        }
+
+        private void btnRegistrarGrupo_Click(object sender, EventArgs e)
+        {
+            actualizarProductoGrupo();
+
         }
     }
 }

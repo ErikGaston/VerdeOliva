@@ -44,6 +44,9 @@ namespace Verde_Oliva
                 DataTable hamburguesa = AccesoADatos.Producto.ObtenerProductoHamb();
                 DataTable promo = AccesoADatos.Producto.ObtenerProductoPromo();
                 DataTable otros = AccesoADatos.Producto.ObtenerProductoOtros();
+                DataTable bebidas = AccesoADatos.Producto.ObtenerProductoBebidas();
+                DataTable menu = AccesoADatos.Producto.ObtenerProductoMenu();
+
 
                 cmbLomo.DataSource = lomo;
                 cmbLomo.ValueMember = "CostoUnitario";
@@ -79,6 +82,16 @@ namespace Verde_Oliva
                 cmbOtros.ValueMember = "CostoUnitario";
                 cmbOtros.DisplayMember = "Comida";
                 cmbOtros.SelectedIndex = -1;
+
+                cmbBebidas.DataSource = bebidas;
+                cmbBebidas.ValueMember = "CostoUnitario";
+                cmbBebidas.DisplayMember = "Comida";
+                cmbBebidas.SelectedIndex = -1;
+
+                cmbBebidas.DataSource = menu;
+                cmbBebidas.ValueMember = "CostoUnitario";
+                cmbBebidas.DisplayMember = "Comida";
+                cmbBebidas.SelectedIndex = -1;
             }
             catch (Exception e)
             {
@@ -91,7 +104,7 @@ namespace Verde_Oliva
         {
 
             
-            if (cmbLomo.Text.Equals("") && cmbPizza.Text.Equals("") && cmbMediaPizza.Text.Equals("") && cmbEmp.Text.Equals("") && cmbPromo.Text.Equals("") && cmbHamb.Text.Equals("") && cmbOtros.Text.Equals("") && txtCantidad.Text.Equals(""))
+            if (cmbLomo.Text.Equals("") && cmbPizza.Text.Equals("") && cmbMediaPizza.Text.Equals("") && cmbEmp.Text.Equals("") && cmbPromo.Text.Equals("") && cmbHamb.Text.Equals("") && cmbOtros.Text.Equals("") && cmbMenu.Text.Equals("") && cmbBebidas.Text.Equals("") && txtCantidad.Text.Equals(""))
             {
                 MessageBox.Show("Los campos PRODUCTOS son obligatorios!");
             }
@@ -140,6 +153,18 @@ namespace Verde_Oliva
                     grilla.Rows.Add(txtCantidad.Text, cmbOtros.Text, cmbOtros.SelectedValue.ToString(), CostoT);
                     LimpiarCampos();
                 }
+                if (!string.IsNullOrEmpty(cmbBebidas.Text))
+                {
+                    CostoT = int.Parse(cmbBebidas.SelectedValue.ToString()) * float.Parse(txtCantidad.Text);
+                    grilla.Rows.Add(txtCantidad.Text, cmbBebidas.Text, cmbBebidas.SelectedValue.ToString(), CostoT);
+                    LimpiarCampos();
+                }
+                if (!string.IsNullOrEmpty(cmbMenu.Text))
+                {
+                    CostoT = int.Parse(cmbMenu.SelectedValue.ToString()) * float.Parse(txtCantidad.Text);
+                    grilla.Rows.Add(txtCantidad.Text, cmbMenu.Text, cmbMenu.SelectedValue.ToString(), CostoT);
+                    LimpiarCampos();
+                }
 
             }
             calcularMontoTotal();
@@ -163,6 +188,8 @@ namespace Verde_Oliva
             cmbHamb.SelectedIndex = -1;
             cmbPromo.SelectedIndex = -1;
             cmbOtros.SelectedIndex = -1;
+            cmbBebidas.SelectedIndex = -1;
+            cmbMenu.SelectedIndex = -1;
             txtCantidad.Text = "1";
         }
 
@@ -170,7 +197,8 @@ namespace Verde_Oliva
         {
             LimpiarCampos();
 
-            radioEnvio.Checked = false;
+            radioEnvio1.Checked = false;
+            radioEnvio2.Checked = false;
             radioBusca.Checked = false;
 
             rtxtCuadro.Text = "";
@@ -229,7 +257,7 @@ namespace Verde_Oliva
         //FINALIZAR PEDIDO TRANSACCION
         private void BtnFinalizar_Click_1(object sender, EventArgs e)
         {
-            if (txtDireccion.Text != "" && grilla.Rows.Count != 0 && (radioEnvio.Checked == true || radioBusca.Checked == true))
+            if (txtDireccion.Text != "" && grilla.Rows.Count != 0 && (radioEnvio1.Checked == true || radioEnvio2.Checked == true || radioBusca.Checked == true))
             {
                 List<DetallePedido> listaDT = new List<DetallePedido>();
                 int iddetalle = 0;
@@ -292,7 +320,7 @@ namespace Verde_Oliva
                     horasalida = horaactual.AddMinutes(20);
                     BuscaEnvia = "BUSCA";
                 }
-                if (radioEnvio.Checked)
+                if (radioEnvio2.Checked || radioEnvio1.Checked)
                 {
                     horasalida = horaactual.AddMinutes(40);
                     BuscaEnvia = "ENVIAR";
@@ -355,12 +383,49 @@ namespace Verde_Oliva
         }
 
         /*Boton BUSCA Y ENVIA*/
+
+        //Radio Envio 1
+        private void radioEnvio1_CheckedChanged(object sender, EventArgs e)
+        {
+            DataTable envio1 = AccesoADatos.Producto.ObtenerProductoEnvio1();
+            DataTable envio2 = AccesoADatos.Producto.ObtenerProductoEnvio2();
+            if (radioEnvio1.Checked)
+            {
+                foreach (DataGridViewRow fila in grilla.Rows)
+                {
+                    if (fila.Cells["Comida"].Value.ToString().Equals("ENVIO2"))
+                    {
+                        grilla.Rows.RemoveAt(fila.Index);
+                        txtMonto.Text = Convert.ToString(Convert.ToInt32(txtMonto.Text) - Convert.ToInt32(envio2.Rows[0][0]));
+
+                    }
+
+                }
+                grilla.Rows.Add(1, envio1.Rows[0][1], Convert.ToInt32(envio1.Rows[0][0]), Convert.ToInt32(envio1.Rows[0][0]));
+            }
+            calcularMontoTotal();
+            txtMonto.Text = calcularMontoTotal().ToString();
+        }
+
+        //Radio Envio 2
         private void RadioEnvio_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioEnvio.Checked)
+            DataTable envio1 = AccesoADatos.Producto.ObtenerProductoEnvio1();
+            DataTable envio2 = AccesoADatos.Producto.ObtenerProductoEnvio2();
+            if (radioEnvio2.Checked)
             {
-                grilla.Rows.Add(1, "ENVIO", 30, 30);
-                
+                foreach (DataGridViewRow fila in grilla.Rows)
+                {
+                    if (fila.Cells["Comida"].Value.ToString().Equals("ENVIO1"))
+                    {
+                        grilla.Rows.RemoveAt(fila.Index);
+                        txtMonto.Text = Convert.ToString(Convert.ToInt32(txtMonto.Text) - Convert.ToInt32(envio1.Rows[0][0]));
+
+                    }
+
+                }
+                grilla.Rows.Add(1, envio2.Rows[0][1], Convert.ToInt32(envio2.Rows[0][0]), Convert.ToInt32(envio2.Rows[0][0]));
+
             }
             calcularMontoTotal();
             txtMonto.Text = calcularMontoTotal().ToString();
@@ -368,17 +433,27 @@ namespace Verde_Oliva
 
         private void RadioBusca_CheckedChanged(object sender, EventArgs e)
         {
+
             if (radioBusca.Checked)
             {
                 foreach (DataGridViewRow fila in grilla.Rows)
                 {
-                    if (fila.Cells["Comida"].Value.ToString().Equals("ENVIO"))
+                    if(fila != null)
                     {
-                        grilla.Rows.RemoveAt(fila.Index);
-                        txtMonto.Text =Convert.ToString(Convert.ToInt32(txtMonto.Text) - 30);
+                        if (fila.Cells["Comida"].Value.ToString().Equals("ENVIO1"))
+                        {
+                            DataTable envio1 = AccesoADatos.Producto.ObtenerProductoEnvio1();
+                            grilla.Rows.RemoveAt(fila.Index);
+                            txtMonto.Text = Convert.ToString(Convert.ToInt32(txtMonto.Text) - Convert.ToInt32(envio1.Rows[0][0]));
 
+                        }
+                        else if (fila.Cells["Comida"].Value.ToString().Equals("ENVIO2"))
+                        {
+                            DataTable envio2 = AccesoADatos.Producto.ObtenerProductoEnvio2();
+                            grilla.Rows.RemoveAt(fila.Index);
+                            txtMonto.Text = Convert.ToString(Convert.ToInt32(txtMonto.Text) - Convert.ToInt32(envio2.Rows[0][0]));
+                        }
                     }
-                    
                 }
               
             }
@@ -409,6 +484,7 @@ namespace Verde_Oliva
         {
                     e.KeyChar = Char.ToUpper(e.KeyChar);
         }
+
     }
 }
 

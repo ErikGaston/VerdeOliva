@@ -44,9 +44,6 @@
             this.CostoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pedidoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.verdeOlivaDataSet = new Verde_Oliva.VerdeOlivaDataSet();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.lblCantidad = new System.Windows.Forms.Label();
-            this.lblCodigo = new System.Windows.Forms.Label();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.pedidoTableAdapter = new Verde_Oliva.VerdeOlivaDataSetTableAdapters.PedidoTableAdapter();
@@ -58,26 +55,34 @@
             this.txtNroTelefono = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.cmbLomo = new System.Windows.Forms.ComboBox();
-            this.cmbPizza = new System.Windows.Forms.ComboBox();
-            this.cmbEmp = new System.Windows.Forms.ComboBox();
-            this.cmbOtros = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPaga = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblMediaPizza = new System.Windows.Forms.Label();
-            this.cmbMediaPizza = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbHamb = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cmbPromo = new System.Windows.Forms.ComboBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.radioBusca = new System.Windows.Forms.RadioButton();
-            this.radioEnvio = new System.Windows.Forms.RadioButton();
+            this.radioEnvio2 = new System.Windows.Forms.RadioButton();
             this.rtxtCuadro = new System.Windows.Forms.RichTextBox();
+            this.radioEnvio1 = new System.Windows.Forms.RadioButton();
+            this.cmbEmp = new System.Windows.Forms.ComboBox();
+            this.cmbPizza = new System.Windows.Forms.ComboBox();
+            this.lblCodigo = new System.Windows.Forms.Label();
+            this.cmbOtros = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbLomo = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.cmbPromo = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbHamb = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbMediaPizza = new System.Windows.Forms.ComboBox();
+            this.lblMediaPizza = new System.Windows.Forms.Label();
+            this.cmbBebidas = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbMenu = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grilla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pedidoBindingSource)).BeginInit();
@@ -87,11 +92,11 @@
             // 
             // btnFinalizar
             // 
-            this.btnFinalizar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnFinalizar.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizar.Location = new System.Drawing.Point(1293, 891);
+            this.btnFinalizar.Location = new System.Drawing.Point(2001, 1097);
+            this.btnFinalizar.Margin = new System.Windows.Forms.Padding(4);
             this.btnFinalizar.Name = "btnFinalizar";
-            this.btnFinalizar.Size = new System.Drawing.Size(452, 129);
+            this.btnFinalizar.Size = new System.Drawing.Size(517, 122);
             this.btnFinalizar.TabIndex = 19;
             this.btnFinalizar.Text = "Finalizar Pedido";
             this.btnFinalizar.UseVisualStyleBackColor = true;
@@ -99,11 +104,11 @@
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBorrar.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBorrar.Location = new System.Drawing.Point(739, 663);
+            this.btnBorrar.Location = new System.Drawing.Point(985, 816);
+            this.btnBorrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(194, 84);
+            this.btnBorrar.Size = new System.Drawing.Size(259, 103);
             this.btnBorrar.TabIndex = 11;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
@@ -111,11 +116,11 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLimpiar.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(398, 663);
+            this.btnLimpiar.Location = new System.Drawing.Point(531, 816);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(194, 84);
+            this.btnLimpiar.Size = new System.Drawing.Size(259, 103);
             this.btnLimpiar.TabIndex = 10;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -123,11 +128,11 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAgregar.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(65, 663);
+            this.btnAgregar.Location = new System.Drawing.Point(87, 816);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(194, 84);
+            this.btnAgregar.Size = new System.Drawing.Size(259, 103);
             this.btnAgregar.TabIndex = 9;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -135,11 +140,11 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.Controls.Add(this.grilla);
-            this.panel1.Location = new System.Drawing.Point(1002, 100);
+            this.panel1.Location = new System.Drawing.Point(1336, 123);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(890, 399);
+            this.panel1.Size = new System.Drawing.Size(1187, 491);
             this.panel1.TabIndex = 19;
             // 
             // grilla
@@ -156,38 +161,44 @@
             this.CostoTotal});
             this.grilla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grilla.Location = new System.Drawing.Point(0, 0);
+            this.grilla.Margin = new System.Windows.Forms.Padding(4);
             this.grilla.Name = "grilla";
             this.grilla.ReadOnly = true;
             this.grilla.RowHeadersWidth = 50;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grilla.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.grilla.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grilla.Size = new System.Drawing.Size(890, 399);
+            this.grilla.Size = new System.Drawing.Size(1187, 491);
             this.grilla.TabIndex = 15;
             // 
             // Cantidad
             // 
             this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.MinimumWidth = 6;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 125;
             // 
             // Comida
             // 
             this.Comida.HeaderText = "Comida";
+            this.Comida.MinimumWidth = 6;
             this.Comida.Name = "Comida";
             this.Comida.ReadOnly = true;
-            this.Comida.Width = 400;
+            this.Comida.Width = 380;
             // 
             // CostoUnitario
             // 
             this.CostoUnitario.HeaderText = "CostoUnitario";
+            this.CostoUnitario.MinimumWidth = 6;
             this.CostoUnitario.Name = "CostoUnitario";
             this.CostoUnitario.ReadOnly = true;
-            this.CostoUnitario.Width = 157;
+            this.CostoUnitario.Width = 150;
             // 
             // CostoTotal
             // 
             this.CostoTotal.HeaderText = "CostoTotal";
+            this.CostoTotal.MinimumWidth = 6;
             this.CostoTotal.Name = "CostoTotal";
             this.CostoTotal.ReadOnly = true;
             this.CostoTotal.Width = 180;
@@ -202,58 +213,25 @@
             this.verdeOlivaDataSet.DataSetName = "VerdeOlivaDataSet";
             this.verdeOlivaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCantidad.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidad.Location = new System.Drawing.Point(207, 493);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(190, 44);
-            this.txtCantidad.TabIndex = 8;
-            this.txtCantidad.Text = " ";
-            this.txtCantidad.TextChanged += new System.EventHandler(this.TxtCantidad_TextChanged);
-            // 
-            // lblCantidad
-            // 
-            this.lblCantidad.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(6, 493);
-            this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(148, 37);
-            this.lblCantidad.TabIndex = 18;
-            this.lblCantidad.Text = "Cantidad";
-            // 
-            // lblCodigo
-            // 
-            this.lblCodigo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(6, 47);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(114, 37);
-            this.lblCodigo.TabIndex = 13;
-            this.lblCodigo.Text = "Lomos";
-            // 
             // txtDireccion
             // 
-            this.txtDireccion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDireccion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtDireccion.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtDireccion.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDireccion.Location = new System.Drawing.Point(1216, 588);
+            this.txtDireccion.Location = new System.Drawing.Point(1621, 724);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(674, 44);
+            this.txtDireccion.Size = new System.Drawing.Size(897, 53);
             this.txtDireccion.TabIndex = 17;
             // 
             // lblDireccion
             // 
-            this.lblDireccion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDireccion.AutoSize = true;
             this.lblDireccion.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDireccion.Location = new System.Drawing.Point(1020, 595);
+            this.lblDireccion.Location = new System.Drawing.Point(1360, 732);
+            this.lblDireccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(159, 37);
+            this.lblDireccion.Size = new System.Drawing.Size(197, 47);
             this.lblDireccion.TabIndex = 25;
             this.lblDireccion.Text = "Direccion";
             // 
@@ -263,13 +241,13 @@
             // 
             // lblFechaHora
             // 
-            this.lblFechaHora.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblFechaHora.AutoSize = true;
             this.lblFechaHora.Font = new System.Drawing.Font("Arial", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaHora.ForeColor = System.Drawing.Color.White;
-            this.lblFechaHora.Location = new System.Drawing.Point(1414, 54);
+            this.lblFechaHora.Location = new System.Drawing.Point(1885, 66);
+            this.lblFechaHora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFechaHora.Name = "lblFechaHora";
-            this.lblFechaHora.Size = new System.Drawing.Size(218, 36);
+            this.lblFechaHora.Size = new System.Drawing.Size(269, 46);
             this.lblFechaHora.TabIndex = 28;
             this.lblFechaHora.Text = "Fecha y Hora";
             // 
@@ -280,44 +258,44 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1020, 807);
+            this.label1.Location = new System.Drawing.Point(1360, 993);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 37);
+            this.label1.Size = new System.Drawing.Size(142, 47);
             this.label1.TabIndex = 29;
             this.label1.Text = "TOTAL";
             // 
             // txtMonto
             // 
-            this.txtMonto.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtMonto.Enabled = false;
             this.txtMonto.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMonto.Location = new System.Drawing.Point(1214, 800);
+            this.txtMonto.Location = new System.Drawing.Point(1619, 985);
+            this.txtMonto.Margin = new System.Windows.Forms.Padding(4);
             this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(265, 44);
+            this.txtMonto.Size = new System.Drawing.Size(352, 53);
             this.txtMonto.TabIndex = 30;
             // 
             // txtNroTelefono
             // 
-            this.txtNroTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtNroTelefono.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNroTelefono.Location = new System.Drawing.Point(1216, 519);
+            this.txtNroTelefono.Location = new System.Drawing.Point(1621, 639);
+            this.txtNroTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.txtNroTelefono.Name = "txtNroTelefono";
-            this.txtNroTelefono.Size = new System.Drawing.Size(263, 44);
+            this.txtNroTelefono.Size = new System.Drawing.Size(349, 53);
             this.txtNroTelefono.TabIndex = 16;
             this.txtNroTelefono.Text = " ";
             this.txtNroTelefono.TextChanged += new System.EventHandler(this.TxtNroTelefono_TextChanged);
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1020, 526);
+            this.label2.Location = new System.Drawing.Point(1360, 647);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 37);
+            this.label2.Size = new System.Drawing.Size(179, 47);
             this.label2.TabIndex = 32;
             this.label2.Text = "Telefono";
             // 
@@ -325,102 +303,318 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
-            // cmbLomo
+            // label6
             // 
-            this.cmbLomo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLomo.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbLomo.FormattingEnabled = true;
-            this.cmbLomo.Location = new System.Drawing.Point(207, 44);
-            this.cmbLomo.Name = "cmbLomo";
-            this.cmbLomo.Size = new System.Drawing.Size(308, 45);
-            this.cmbLomo.TabIndex = 1;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(1360, 816);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 47);
+            this.label6.TabIndex = 41;
+            this.label6.Text = "Paga";
             // 
-            // cmbPizza
+            // txtPaga
             // 
-            this.cmbPizza.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPizza.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbPizza.FormattingEnabled = true;
-            this.cmbPizza.Location = new System.Drawing.Point(649, 44);
-            this.cmbPizza.Name = "cmbPizza";
-            this.cmbPizza.Size = new System.Drawing.Size(308, 45);
-            this.cmbPizza.TabIndex = 2;
+            this.txtPaga.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaga.Location = new System.Drawing.Point(1619, 816);
+            this.txtPaga.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPaga.Name = "txtPaga";
+            this.txtPaga.Size = new System.Drawing.Size(352, 53);
+            this.txtPaga.TabIndex = 18;
+            this.txtPaga.TextChanged += new System.EventHandler(this.TxtPaga_TextChanged);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Cambria", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(933, 11);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(608, 94);
+            this.lblTitulo.TabIndex = 33;
+            this.lblTitulo.Text = "Registrar Pedido";
+            // 
+            // radioBusca
+            // 
+            this.radioBusca.AutoSize = true;
+            this.radioBusca.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioBusca.Location = new System.Drawing.Point(985, 1169);
+            this.radioBusca.Margin = new System.Windows.Forms.Padding(4);
+            this.radioBusca.Name = "radioBusca";
+            this.radioBusca.Size = new System.Drawing.Size(159, 50);
+            this.radioBusca.TabIndex = 14;
+            this.radioBusca.TabStop = true;
+            this.radioBusca.Text = "BUSCA";
+            this.radioBusca.UseVisualStyleBackColor = true;
+            this.radioBusca.CheckedChanged += new System.EventHandler(this.RadioBusca_CheckedChanged);
+            // 
+            // radioEnvio2
+            // 
+            this.radioEnvio2.AutoSize = true;
+            this.radioEnvio2.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioEnvio2.Location = new System.Drawing.Point(583, 1169);
+            this.radioEnvio2.Margin = new System.Windows.Forms.Padding(4);
+            this.radioEnvio2.Name = "radioEnvio2";
+            this.radioEnvio2.Size = new System.Drawing.Size(171, 50);
+            this.radioEnvio2.TabIndex = 13;
+            this.radioEnvio2.TabStop = true;
+            this.radioEnvio2.Text = "ENVIO 2";
+            this.radioEnvio2.UseVisualStyleBackColor = true;
+            this.radioEnvio2.CheckedChanged += new System.EventHandler(this.RadioEnvio_CheckedChanged);
+            // 
+            // rtxtCuadro
+            // 
+            this.rtxtCuadro.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtCuadro.Location = new System.Drawing.Point(87, 959);
+            this.rtxtCuadro.Margin = new System.Windows.Forms.Padding(4);
+            this.rtxtCuadro.Name = "rtxtCuadro";
+            this.rtxtCuadro.Size = new System.Drawing.Size(1156, 165);
+            this.rtxtCuadro.TabIndex = 12;
+            this.rtxtCuadro.Text = "";
+            this.rtxtCuadro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RtxtCuadro_KeyPress);
+            // 
+            // radioEnvio1
+            // 
+            this.radioEnvio1.AutoSize = true;
+            this.radioEnvio1.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioEnvio1.Location = new System.Drawing.Point(180, 1169);
+            this.radioEnvio1.Margin = new System.Windows.Forms.Padding(4);
+            this.radioEnvio1.Name = "radioEnvio1";
+            this.radioEnvio1.Size = new System.Drawing.Size(171, 50);
+            this.radioEnvio1.TabIndex = 44;
+            this.radioEnvio1.TabStop = true;
+            this.radioEnvio1.Text = "ENVIO 1";
+            this.radioEnvio1.UseVisualStyleBackColor = true;
+            this.radioEnvio1.CheckedChanged += new System.EventHandler(this.radioEnvio1_CheckedChanged);
             // 
             // cmbEmp
             // 
             this.cmbEmp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmp.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmp.FormattingEnabled = true;
-            this.cmbEmp.Location = new System.Drawing.Point(207, 146);
+            this.cmbEmp.Location = new System.Drawing.Point(276, 180);
+            this.cmbEmp.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEmp.Name = "cmbEmp";
-            this.cmbEmp.Size = new System.Drawing.Size(308, 45);
+            this.cmbEmp.Size = new System.Drawing.Size(409, 54);
             this.cmbEmp.TabIndex = 3;
+            // 
+            // cmbPizza
+            // 
+            this.cmbPizza.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPizza.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPizza.FormattingEnabled = true;
+            this.cmbPizza.Location = new System.Drawing.Point(865, 54);
+            this.cmbPizza.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbPizza.Name = "cmbPizza";
+            this.cmbPizza.Size = new System.Drawing.Size(409, 54);
+            this.cmbPizza.TabIndex = 2;
+            // 
+            // lblCodigo
+            // 
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigo.Location = new System.Drawing.Point(8, 58);
+            this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(142, 47);
+            this.lblCodigo.TabIndex = 13;
+            this.lblCodigo.Text = "Lomos";
             // 
             // cmbOtros
             // 
             this.cmbOtros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOtros.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbOtros.FormattingEnabled = true;
-            this.cmbOtros.Location = new System.Drawing.Point(649, 344);
+            this.cmbOtros.Location = new System.Drawing.Point(865, 423);
+            this.cmbOtros.Margin = new System.Windows.Forms.Padding(4);
             this.cmbOtros.Name = "cmbOtros";
-            this.cmbOtros.Size = new System.Drawing.Size(308, 45);
+            this.cmbOtros.Size = new System.Drawing.Size(409, 54);
             this.cmbOtros.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(534, 47);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 37);
-            this.label3.TabIndex = 38;
-            this.label3.Text = "Pizzas";
             // 
             // label4
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 149);
+            this.label4.Location = new System.Drawing.Point(8, 183);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(195, 37);
+            this.label4.Size = new System.Drawing.Size(242, 46);
             this.label4.TabIndex = 39;
             this.label4.Text = "Empanadas";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(712, 58);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(135, 47);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "Pizzas";
+            // 
+            // cmbLomo
+            // 
+            this.cmbLomo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLomo.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbLomo.FormattingEnabled = true;
+            this.cmbLomo.Location = new System.Drawing.Point(276, 54);
+            this.cmbLomo.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbLomo.Name = "cmbLomo";
+            this.cmbLomo.Size = new System.Drawing.Size(409, 54);
+            this.cmbLomo.TabIndex = 1;
+            // 
             // label5
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(534, 347);
+            this.label5.Location = new System.Drawing.Point(712, 427);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 37);
+            this.label5.Size = new System.Drawing.Size(121, 47);
             this.label5.TabIndex = 40;
             this.label5.Text = "Otros";
             // 
-            // label6
+            // lblCantidad
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1020, 663);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 37);
-            this.label6.TabIndex = 41;
-            this.label6.Text = "Paga";
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(8, 607);
+            this.lblCantidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(185, 47);
+            this.lblCantidad.TabIndex = 18;
+            this.lblCantidad.Text = "Cantidad";
             // 
-            // txtPaga
+            // txtCantidad
             // 
-            this.txtPaga.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPaga.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaga.Location = new System.Drawing.Point(1214, 663);
-            this.txtPaga.Name = "txtPaga";
-            this.txtPaga.Size = new System.Drawing.Size(265, 44);
-            this.txtPaga.TabIndex = 18;
-            this.txtPaga.TextChanged += new System.EventHandler(this.TxtPaga_TextChanged);
+            this.txtCantidad.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidad.Location = new System.Drawing.Point(276, 607);
+            this.txtCantidad.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(252, 53);
+            this.txtCantidad.TabIndex = 8;
+            this.txtCantidad.Text = " ";
+            this.txtCantidad.TextChanged += new System.EventHandler(this.TxtCantidad_TextChanged);
+            // 
+            // cmbPromo
+            // 
+            this.cmbPromo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPromo.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPromo.FormattingEnabled = true;
+            this.cmbPromo.Location = new System.Drawing.Point(276, 310);
+            this.cmbPromo.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbPromo.Name = "cmbPromo";
+            this.cmbPromo.Size = new System.Drawing.Size(409, 54);
+            this.cmbPromo.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(8, 310);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(147, 46);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "Promo";
+            // 
+            // cmbHamb
+            // 
+            this.cmbHamb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHamb.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbHamb.FormattingEnabled = true;
+            this.cmbHamb.Location = new System.Drawing.Point(865, 306);
+            this.cmbHamb.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbHamb.Name = "cmbHamb";
+            this.cmbHamb.Size = new System.Drawing.Size(409, 54);
+            this.cmbHamb.TabIndex = 6;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(712, 310);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(131, 46);
+            this.label8.TabIndex = 44;
+            this.label8.Text = "Hamb";
+            // 
+            // cmbMediaPizza
+            // 
+            this.cmbMediaPizza.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMediaPizza.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMediaPizza.FormattingEnabled = true;
+            this.cmbMediaPizza.Location = new System.Drawing.Point(865, 180);
+            this.cmbMediaPizza.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbMediaPizza.Name = "cmbMediaPizza";
+            this.cmbMediaPizza.Size = new System.Drawing.Size(409, 54);
+            this.cmbMediaPizza.TabIndex = 4;
+            // 
+            // lblMediaPizza
+            // 
+            this.lblMediaPizza.AutoSize = true;
+            this.lblMediaPizza.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMediaPizza.Location = new System.Drawing.Point(712, 183);
+            this.lblMediaPizza.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMediaPizza.Name = "lblMediaPizza";
+            this.lblMediaPizza.Size = new System.Drawing.Size(133, 47);
+            this.lblMediaPizza.TabIndex = 46;
+            this.lblMediaPizza.Text = "Media";
+            // 
+            // cmbBebidas
+            // 
+            this.cmbBebidas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBebidas.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBebidas.FormattingEnabled = true;
+            this.cmbBebidas.Location = new System.Drawing.Point(276, 420);
+            this.cmbBebidas.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbBebidas.Name = "cmbBebidas";
+            this.cmbBebidas.Size = new System.Drawing.Size(409, 54);
+            this.cmbBebidas.TabIndex = 47;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(8, 425);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(167, 47);
+            this.label9.TabIndex = 48;
+            this.label9.Text = "Bebidas";
+            // 
+            // cmbMenu
+            // 
+            this.cmbMenu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMenu.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMenu.FormattingEnabled = true;
+            this.cmbMenu.Location = new System.Drawing.Point(865, 531);
+            this.cmbMenu.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbMenu.Name = "cmbMenu";
+            this.cmbMenu.Size = new System.Drawing.Size(409, 54);
+            this.cmbMenu.TabIndex = 49;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(712, 535);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(123, 47);
+            this.label10.TabIndex = 50;
+            this.label10.Text = "Menu";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.cmbMenu);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.cmbBebidas);
             this.groupBox1.Controls.Add(this.lblMediaPizza);
             this.groupBox1.Controls.Add(this.cmbMediaPizza);
             this.groupBox1.Controls.Add(this.label8);
@@ -438,131 +632,24 @@
             this.groupBox1.Controls.Add(this.cmbPizza);
             this.groupBox1.Controls.Add(this.cmbEmp);
             this.groupBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(29, 87);
+            this.groupBox1.Location = new System.Drawing.Point(39, 107);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(967, 554);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(1289, 682);
             this.groupBox1.TabIndex = 43;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PRODUCTO";
             // 
-            // lblMediaPizza
-            // 
-            this.lblMediaPizza.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblMediaPizza.AutoSize = true;
-            this.lblMediaPizza.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMediaPizza.Location = new System.Drawing.Point(534, 149);
-            this.lblMediaPizza.Name = "lblMediaPizza";
-            this.lblMediaPizza.Size = new System.Drawing.Size(107, 37);
-            this.lblMediaPizza.TabIndex = 46;
-            this.lblMediaPizza.Text = "Media";
-            // 
-            // cmbMediaPizza
-            // 
-            this.cmbMediaPizza.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMediaPizza.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbMediaPizza.FormattingEnabled = true;
-            this.cmbMediaPizza.Location = new System.Drawing.Point(649, 146);
-            this.cmbMediaPizza.Name = "cmbMediaPizza";
-            this.cmbMediaPizza.Size = new System.Drawing.Size(308, 45);
-            this.cmbMediaPizza.TabIndex = 4;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(534, 252);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(104, 37);
-            this.label8.TabIndex = 44;
-            this.label8.Text = "Hamb";
-            // 
-            // cmbHamb
-            // 
-            this.cmbHamb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbHamb.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbHamb.FormattingEnabled = true;
-            this.cmbHamb.Location = new System.Drawing.Point(649, 249);
-            this.cmbHamb.Name = "cmbHamb";
-            this.cmbHamb.Size = new System.Drawing.Size(308, 45);
-            this.cmbHamb.TabIndex = 6;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 252);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(116, 37);
-            this.label7.TabIndex = 42;
-            this.label7.Text = "Promo";
-            // 
-            // cmbPromo
-            // 
-            this.cmbPromo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPromo.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbPromo.FormattingEnabled = true;
-            this.cmbPromo.Location = new System.Drawing.Point(207, 252);
-            this.cmbPromo.Name = "cmbPromo";
-            this.cmbPromo.Size = new System.Drawing.Size(308, 45);
-            this.cmbPromo.TabIndex = 5;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Cambria", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(700, 9);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(488, 75);
-            this.lblTitulo.TabIndex = 33;
-            this.lblTitulo.Text = "Registrar Pedido";
-            // 
-            // radioBusca
-            // 
-            this.radioBusca.AutoSize = true;
-            this.radioBusca.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBusca.Location = new System.Drawing.Point(533, 950);
-            this.radioBusca.Name = "radioBusca";
-            this.radioBusca.Size = new System.Drawing.Size(129, 41);
-            this.radioBusca.TabIndex = 14;
-            this.radioBusca.TabStop = true;
-            this.radioBusca.Text = "BUSCA";
-            this.radioBusca.UseVisualStyleBackColor = true;
-            this.radioBusca.CheckedChanged += new System.EventHandler(this.RadioBusca_CheckedChanged);
-            // 
-            // radioEnvio
-            // 
-            this.radioEnvio.AutoSize = true;
-            this.radioEnvio.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioEnvio.Location = new System.Drawing.Point(291, 950);
-            this.radioEnvio.Name = "radioEnvio";
-            this.radioEnvio.Size = new System.Drawing.Size(135, 41);
-            this.radioEnvio.TabIndex = 13;
-            this.radioEnvio.TabStop = true;
-            this.radioEnvio.Text = "ENVIAR";
-            this.radioEnvio.UseVisualStyleBackColor = true;
-            this.radioEnvio.CheckedChanged += new System.EventHandler(this.RadioEnvio_CheckedChanged);
-            // 
-            // rtxtCuadro
-            // 
-            this.rtxtCuadro.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtCuadro.Location = new System.Drawing.Point(65, 779);
-            this.rtxtCuadro.Name = "rtxtCuadro";
-            this.rtxtCuadro.Size = new System.Drawing.Size(868, 135);
-            this.rtxtCuadro.TabIndex = 12;
-            this.rtxtCuadro.Text = "";
-            this.rtxtCuadro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RtxtCuadro_KeyPress);
-            // 
             // Pedido
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkOliveGreen;
-            this.ClientSize = new System.Drawing.Size(1904, 1042);
+            this.ClientSize = new System.Drawing.Size(2541, 1241);
+            this.Controls.Add(this.radioEnvio1);
             this.Controls.Add(this.rtxtCuadro);
-            this.Controls.Add(this.radioEnvio);
+            this.Controls.Add(this.radioEnvio2);
             this.Controls.Add(this.radioBusca);
             this.Controls.Add(this.txtPaga);
             this.Controls.Add(this.label6);
@@ -582,9 +669,11 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Pedido";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Pedido";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Pedido_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grilla)).EndInit();
@@ -605,9 +694,6 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView grilla;
-        private System.Windows.Forms.TextBox txtCantidad;
-        private System.Windows.Forms.Label lblCantidad;
-        private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label lblDireccion;
         private VerdeOlivaDataSet verdeOlivaDataSet;
@@ -621,30 +707,38 @@
         private System.Windows.Forms.TextBox txtNroTelefono;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PrintDialog printDialog1;
-        private System.Windows.Forms.ComboBox cmbLomo;
-        private System.Windows.Forms.ComboBox cmbPizza;
-        private System.Windows.Forms.ComboBox cmbEmp;
-        private System.Windows.Forms.ComboBox cmbOtros;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtPaga;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cmbPromo;
+        private System.Windows.Forms.RadioButton radioBusca;
+        private System.Windows.Forms.RadioButton radioEnvio2;
+        private System.Windows.Forms.RichTextBox rtxtCuadro;
+        private System.Windows.Forms.RadioButton radioEnvio1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comida;
         private System.Windows.Forms.DataGridViewTextBoxColumn CostoUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn CostoTotal;
-        private System.Windows.Forms.RadioButton radioBusca;
-        private System.Windows.Forms.RadioButton radioEnvio;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbEmp;
+        private System.Windows.Forms.ComboBox cmbPizza;
+        private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.ComboBox cmbOtros;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbLomo;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.ComboBox cmbPromo;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbHamb;
-        private System.Windows.Forms.RichTextBox rtxtCuadro;
-        private System.Windows.Forms.Label lblMediaPizza;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbMediaPizza;
+        private System.Windows.Forms.Label lblMediaPizza;
+        private System.Windows.Forms.ComboBox cmbBebidas;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbMenu;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
